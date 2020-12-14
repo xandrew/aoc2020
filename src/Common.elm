@@ -1,4 +1,4 @@
-module Common exposing (maybeList, word, blocks)
+module Common exposing (maybeList, word, blocks, onlyJust, mdiv, mmod)
 
 import Set exposing (Set)
 import Parser exposing (Parser, (|.), (|=), succeed, symbol, int, spaces, end)
@@ -32,3 +32,17 @@ blocks lines =
                      prv :: prest_blocks -> (nxt ++ " " ++ prv) :: prest_blocks
                      [] -> [nxt]
 
+onlyJust: List (Maybe a) -> List a
+onlyJust l =
+    case l of
+        Nothing :: rest -> onlyJust rest
+        Just x :: rest -> x :: onlyJust rest
+        [] -> []
+              
+-- Weep: 7269625663 // 1 = -1320308929
+mdiv b a =
+    floor (toFloat a / toFloat b)
+
+mmod b a =
+    a - b * (mdiv b a)
+    

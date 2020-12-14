@@ -5,7 +5,7 @@ import Html exposing (Html, div, text, textarea)
 import Html.Attributes exposing (..)
 import Html.Events exposing (onInput)
 
-import Day12 exposing (parse, solve1, solve2)
+import Day13 exposing (parse, solve1, solve2)
 
 -- MAIN
 
